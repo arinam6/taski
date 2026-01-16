@@ -11,6 +11,8 @@ services:
   backend:
     image: arinam6/taski_backend
     env_file: .env
+    depends_on:
+      - db
     volumes:
       - static_volume:/backend_static
   frontend:
@@ -22,6 +24,8 @@ services:
   gateway:
     image: arinam6/taski_gateway
     env_file: .env
+    depends_on:
+      - backend
     volumes:
       - static_volume:/staticfiles/
     ports:
